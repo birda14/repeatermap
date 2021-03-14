@@ -5,15 +5,41 @@ CREATE DATABASE repeatermap;
 -- connect to the newly created database
 \c repeatermap
 
+--Extend database to use postgis
+CREATE EXTENSION postgis;
+
+--test to ensure gis version is as expected
+select postGIS_version();
+
+--Drop all Tables
+DROP TABLE IF EXISTS country;
+DROP TABLE IF EXISTS state;
+DROP TABLE IF EXISTS repeater;
+
 --Table creation
-CREATE TABLE IF NOT EXISTS test(
-    id integer,
-    testName varchar(30),
-    PRIMARY KEY (id)
+CREATE TABLE country(
+    CountryID SERIAL,
+    CountryName varchar(60),
+    PRIMARY KEY(CountryID)
 );
 
---data insertion, may occur elsewhere
-INSERT INTO test(id,testName) VALUES (0, 'someTest');
+CREATE TABLE state(
+    StateId varchar(10),
+    StateName varchar(60),
+    CountryID SERIAL,
+    PRIMARY KEY(StateId),
+    CONSTRAINT fk_country
+        FOREIGN KEY(CountryID)
+            REFERENCES country(CountryID)
+);
 
---test to ensure that data was entered into the given database
-SELECT COUNT(*) FROM test;
+CREATE TABLE repeater(
+    RepeaterId integer,
+    StateId varchar(10),
+    PRIMARY KEY(RepeaterId),
+    CONSTRAINT fk_state
+        FOREIGN KEY(StateId)
+            REFERENCES state(StateId)
+);
+
+\dt
