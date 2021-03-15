@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply p-6;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
+}
+
+header > nav {
+  @apply flex;
+}
+
+header > nav > a:not(:last-of-type) {
+  @apply mr-3;
+}
