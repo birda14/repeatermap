@@ -8,14 +8,28 @@
         <link rel="stylesheet" href="{{ '/style.css' | url }}">
     </head>
     <body{% if templateClass %} class="{{ templateClass }}"{% endif %}>
-        <header>
+        <header class="site-header">
             {% include 'partials/navigation.njk' %}
-            <h1>{{ title }}</h1>
         </header>
-        <main>
-            {{ content | safe }}
-        </main>
-        {% include 'partials/footer.njk' %}
+        <div class="site-content">
+            <div class="page-header">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="page-content">
+                <main class="content-area">
+                    {{ content | safe }}
+                </main>
+                <div class="sidebar-left">
+                    <p>Left sidebar</p>
+                </div>
+                <div class="sidebar-right">
+                    <p>Right sidebar</p>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer" role="contentinfo">
+            <p>Repeatermap uses data from <a href="https://repeaterbook.com" target="_blank">repeaterbook.com</a><br/>Copyright &copy; 2021 Repeatermap</p>
+        </footer>
         <!-- Current page: {{ page.url | url }} -->
     </body>
 </html>

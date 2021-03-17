@@ -2,22 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply p-6;
+/** Layout */
 
+body {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-body > main {
+.site-header,
+.site-footer {
+  @apply p-6;
+}
+
+.site-header nav {
+  @apply flex items-center;
+}
+
+.site-header nav > a {
+  @apply mr-3;
+
+  font-size: 18px;
+}
+
+.site-header nav > a:not(:last-of-type) {
+  @apply mr-3;
+}
+
+.site-header nav > .sep {
   flex: 1;
 }
 
-header > nav {
-  @apply flex;
+.site-header a.brand {
+  @apply font-bold;
+
+  font-size: 22px;
 }
 
-header > nav > a:not(:last-of-type) {
-  @apply mr-3;
+.site-footer {
+  @apply text-gray-800;
+
+  text-align: center;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.site-content {
+  flex: 1;
+}
+
+/** Pages */
+
+.page-header {
+  @apply p-6 bg-gray-200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 256px;
+}
+
+.page-content {
+  @apply p-6;
+}
+
+.sidebar-left,
+.sidebar-right {
+  @apply text-gray-800; 
+}
+
+@screen md {
+  .page-content {
+    @apply pt-6;
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .content-area {
+    order: 3;
+    flex: 1 auto;
+    @apply max-w-prose mx-auto;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    @apply px-6;
+
+    flex: 1 0 256px;
+  }
+
+  .sidebar-left {
+    order: 2;
+  }
+
+  .sidebar-right {
+    order: 4;
+  }
+}
+
+blockquote {
+  font-size: 22px;
 }
