@@ -6,8 +6,10 @@
         <title>Welcome to Repeatermap</title>
         <meta name="description" content="Amateur radio repeaters in Canada">
         <link rel="stylesheet" href="/style.css">
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+        <script type="text/javascript" src="/bundle.js"></script>
     </head>
-    <body class="page-home">
+    <body class="page-home has-map">
         <header class="site-header">
             
 <nav>
@@ -21,7 +23,7 @@
                 <h1>Welcome to Repeatermap</h1>
             </div>
             <main class="page-content">
-                
+                <div id="map_container"></div>
             </main>
         </div>
         <footer class="site-footer" role="contentinfo">

@@ -1,6 +1,6 @@
 ---
 layout: layouts/home.njk
-templateClass: page-home
+templateClass: page-home has-map
 title: Welcome to Repeatermap
 ---
 

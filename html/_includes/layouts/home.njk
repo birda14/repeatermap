@@ -6,6 +6,8 @@
         <title>{{ title or metadata.title }}</title>
         <meta name="description" content="{{ description or metadata.description }}">
         <link rel="stylesheet" href="{{ '/style.css' | url }}">
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+        <script type="text/javascript" src="{{ '/bundle.js' | url }}"></script>
     </head>
     <body{% if templateClass %} class="{{ templateClass }}"{% endif %}>
         <header class="site-header">
@@ -16,7 +18,7 @@
                 <h1>{{ title }}</h1>
             </div>
             <main class="page-content">
-                {{ content | safe }}
+                <div id="map_container"></div>
             </main>
         </div>
         <footer class="site-footer" role="contentinfo">
